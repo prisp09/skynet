@@ -6,14 +6,14 @@ $color-orange-red-crayola: #FE5F55;
 $color-banana: #D1AC00;
 
 
-body{
+body {
     margin: 1.5rem 2rem;
     background-color: $color-background;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color: $color-text;
 }
 
-table{
+table {
     border-collapse: collapse;
     width: 100%;
     border: $color-indigo-dye 2px solid;
@@ -21,34 +21,68 @@ table{
     table-layout: fixed;
 }
 
-th{
+th {
+    border: $color-indigo-dye 2px solid;
+    overflow-wrap: break-word;
+    padding-left: 4px;
+    padding-right: 4px;
+    position: relative;
+}
+
+td {
     border: $color-indigo-dye 2px solid;
     overflow-wrap: break-word;
     padding-left: 4px;
     padding-right: 4px;
 }
 
-td{
-    border: $color-indigo-dye 2px solid;
-    overflow-wrap: break-word;
-    padding-left: 4px;
-    padding-right: 4px;
-}
-thead{
+thead {
     background-color: $color-indigo-dye;
     color: $color-text;
 }
 
-#zeni{
+#zeni {
     color: $color-razzmic-berry;
 }
 
-#vasani{
+#vasani {
     color: $color-orange-red-crayola;
 }
 
-.highlight{
+.highlight {
     background-color: $color-banana;
     color: #000;
     font-weight: bold;
+}
+
+.up {
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid black;
+    position: absolute;
+    top: 4px;
+    right: 2px;
+    cursor: pointer;
+
+    &:hover {
+        border-bottom: 8px solid $color-banana;
+    }
+}
+
+.down {
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid black;
+    position: absolute;
+    right: 2px;
+    top: 14px;
+    cursor: pointer;
+
+    &:hover {
+        border-top: 8px solid $color-banana;
+    }
 }
