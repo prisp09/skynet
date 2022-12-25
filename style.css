@@ -1,0 +1,34 @@
+body {
+  margin: 1.5rem 2rem;
+  background-color: #040F16;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: #E5E7E6; }
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  border: #053C5E 2px solid;
+  overflow-wrap: break-word;
+  table-layout: fixed; }
+
+th {
+  border: #053C5E 2px solid;
+  overflow-wrap: break-word;
+  padding-left: 4px;
+  padding-right: 4px; }
+
+td {
+  border: #053C5E 2px solid;
+  overflow-wrap: break-word;
+  padding-left: 4px;
+  padding-right: 4px; }
+
+thead {
+  background-color: #053C5E;
+  color: #E5E7E6; }
+
+#zeni {
+  color: #9C528B; }
+
+#vasani {
+  color: #FE5F55; }

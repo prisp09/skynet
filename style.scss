@@ -1,0 +1,48 @@
+$color-background: #040F16;
+$color-text: #E5E7E6;
+$color-indigo-dye: #053C5E;
+$color-razzmic-berry: #9C528B;
+$color-orange-red-crayola: #FE5F55;
+$color-banana: #D1AC00;
+
+
+body{
+    margin: 1.5rem 2rem;
+    background-color: $color-background;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: $color-text;
+}
+
+table{
+    border-collapse: collapse;
+    width: 100%;
+    border: $color-indigo-dye 2px solid;
+    overflow-wrap: break-word;
+    table-layout: fixed;
+}
+
+th{
+    border: $color-indigo-dye 2px solid;
+    overflow-wrap: break-word;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+td{
+    border: $color-indigo-dye 2px solid;
+    overflow-wrap: break-word;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+thead{
+    background-color: $color-indigo-dye;
+    color: $color-text;
+}
+
+#zeni{
+    color: $color-razzmic-berry;
+}
+
+#vasani{
+    color: $color-orange-red-crayola;
+}
