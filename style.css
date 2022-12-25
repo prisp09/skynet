@@ -32,3 +32,8 @@ thead {
 
 #vasani {
   color: #FE5F55; }
+
+.highlight {
+  background-color: #D1AC00;
+  color: #000;
+  font-weight: bold; }

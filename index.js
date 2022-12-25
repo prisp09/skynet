@@ -43,11 +43,11 @@ function renderFruits(fruits, rival) {
 			</tr>`;
 		} else { //if price is lower or fruit is not in rival
 			html += `
-			<tr class="highlight">
-				<td>${fruit.fruit_name}</td>
-				<td>${fruit.price}</td>
-				<td>${fruit.last_updated}</td>
-				<td>${fruit.inventory_count}</td>
+			<tr>
+				<td class="highlight">${fruit.fruit_name}</td>
+				<td class="highlight">${fruit.price}</td>
+				<td class="highlight">${fruit.last_updated}</td>
+				<td class="highlight">${fruit.inventory_count}</td>
 			</tr>`;
 		}
 	});
