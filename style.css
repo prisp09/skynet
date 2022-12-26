@@ -8,6 +8,13 @@ body {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   color: #E5E7E6; }
 
+.filter-inputs {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.2rem 0; }
+
 .content-wrapper {
   margin: 1.5rem 2rem; }
 
