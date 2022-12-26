@@ -5,6 +5,11 @@ $color-razzmic-berry: #9C528B;
 $color-orange-red-crayola: #FE5F55;
 $color-banana: #D1AC00;
 
+h1{
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+}
 
 body {
     margin: 1.5rem 2rem;
@@ -85,4 +90,33 @@ thead {
     &:hover {
         border-top: 8px solid $color-banana;
     }
+}
+
+.fruit-preview {
+    border-radius: 20px;
+    border: transparent 2px solid;
+    height: 200px; width: fit-content;
+    cursor: pointer;
+    &:hover {
+        border: $color-text 4px solid;
+    }
+}
+
+.dataRow{
+    cursor: pointer;
+}
+
+.banana{
+    background-color: $color-banana;
+    color: #000;
+    font-weight: bold;
+    padding-inline: 2px;
+}
+
+.info{
+    font-weight: bold;
+    background-color: black;
+    margin: -0.4rem;
+    padding: 0.4rem;
+    border-radius: 20px;
 }

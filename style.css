@@ -1,3 +1,8 @@
+h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center; }
+
 body {
   margin: 1.5rem 2rem;
   background-color: #040F16;
@@ -64,3 +69,28 @@ thead {
   cursor: pointer; }
   .down:hover {
     border-top: 8px solid #D1AC00; }
+
+.fruit-preview {
+  border-radius: 20px;
+  border: transparent 2px solid;
+  height: 200px;
+  width: fit-content;
+  cursor: pointer; }
+  .fruit-preview:hover {
+    border: #E5E7E6 4px solid; }
+
+.dataRow {
+  cursor: pointer; }
+
+.banana {
+  background-color: #D1AC00;
+  color: #000;
+  font-weight: bold;
+  padding-inline: 2px; }
+
+.info {
+  font-weight: bold;
+  background-color: black;
+  margin: -0.4rem;
+  padding: 0.4rem;
+  border-radius: 20px; }
