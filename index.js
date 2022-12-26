@@ -15,6 +15,7 @@ fetch(`./data.json`)
 		});
 		renderFruits(zeni, vasani);
 		renderFruits(vasani, zeni);
+		renderFilters(allFruits);
 	});
 
 function renderFruits(fruits, rival) {
@@ -140,41 +141,77 @@ function renderFruits(fruits, rival) {
 			renderFruits(vasani, zeni);
 		};
 	}
-	//----------------------END SORT BUTTONS----------------------
-	
-	if(supplier === "zeni"){
+
+	//----------------------IMAGE PREVIEW----------------------
+	if (supplier === "zeni") {
 		fruits.forEach((fruit) => {
-			document.getElementById(`${fruit.fruit_name.split(" ").join("")}zeni`).onclick = function () {
+			document.getElementById(
+				`${fruit.fruit_name.split(" ").join("")}zeni`
+			).onclick = function () {
 				changeImage(fruit.fruit_name);
 			};
 		});
-	}
-	else{
+	} else {
 		fruits.forEach((fruit) => {
-			document.getElementById(`${fruit.fruit_name.split(" ").join("")}vasani`).onclick = function () {
+			document.getElementById(
+				`${fruit.fruit_name.split(" ").join("")}vasani`
+			).onclick = function () {
 				changeImage(fruit.fruit_name);
 			};
 		});
 	}
 }
 
+function renderFilters(arr) {
+	let html = `<h1>Filters:</h1>`;
+
+	arr.forEach((fruit) => {
+		html += `<input type="checkbox" id="${fruit}" name="${fruit}" value="${fruit}" checked/>
+		<label for="${fruit}">${fruit}</label><br>
+		`;
+	});
+
+	document.getElementById("filters").innerHTML = html;
+
+
+		const filters = document.querySelectorAll("input[type=checkbox]");
+		filters.forEach((filter) => {
+			filter.addEventListener("change", function() {
+				const currentFruit = filter.value.split(" ").join("");
+				zeni.forEach((fruit) => {
+					if (fruit.fruit_name === filter.value) {
+						document.getElementById(currentFruit+"zeni").style.display = this.checked ? "" : "none";
+					}
+				});
+				vasani.forEach((fruit) => {
+					if (fruit.fruit_name === filter.value) {
+						document.getElementById(currentFruit+"vasani").style.display = this.checked ? "" : "none";
+					}
+				});
+			});
+		});
+}
+
 function changeImage(fruit_name) {
-	if(flag){document.getElementById("image-column").innerHTML =
-		`<img
+	if (flag) {
+		document.getElementById("image-column").innerHTML = `<img
 		id="fruit-preview"
 		class="fruit-preview"
 		src="./images/${fruit_name}.jpg"
 	/>`;
-	flag = false;
-	}
-	else{
-		document.getElementById("fruit-preview").src = `./images/${fruit_name}.jpg`;
+		flag = false;
+	} else {
+		document.getElementById(
+			"fruit-preview"
+		).src = `./images/${fruit_name}.jpg`;
 	}
 
 	document.getElementById("fruit-preview").onclick = function () {
-		window.open(`https://www.google.com/search?q=${fruit_name.split(" ").join("+")}`);
+		window.open(
+			`https://www.google.com/search?q=${fruit_name.split(" ").join("+")}`
+		);
 	};
-};
+}
 
 function contains(rival, curr) {
 	let bool = false;

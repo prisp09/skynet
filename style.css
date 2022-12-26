@@ -4,10 +4,12 @@ h1 {
   text-align: center; }
 
 body {
-  margin: 1.5rem 2rem;
   background-color: #040F16;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   color: #E5E7E6; }
+
+.content-wrapper {
+  margin: 1.5rem 2rem; }
 
 table {
   border-collapse: collapse;
@@ -34,7 +36,7 @@ thead {
   color: #E5E7E6; }
 
 #zeni {
-  color: #9C528B; }
+  color: #b05e9d; }
 
 #vasani {
   color: #FE5F55; }
@@ -78,6 +80,18 @@ thead {
   cursor: pointer; }
   .fruit-preview:hover {
     border: #E5E7E6 4px solid; }
+  @media (max-width: 1125px) {
+    .fruit-preview {
+      transform: scale(0.8) translateX(-40%); } }
+  @media (max-width: 768px) {
+    .fruit-preview {
+      transform: scale(0.6) translateX(-50%); } }
+  @media (max-width: 625px) {
+    .fruit-preview {
+      transform: scale(0.6) translateX(-70%); } }
+  @media (max-width: 552px) {
+    .fruit-preview {
+      transform: scale(0.5) translateX(-80%); } }
 
 .dataRow {
   cursor: pointer; }
@@ -93,4 +107,21 @@ thead {
   background-color: black;
   margin: -0.4rem;
   padding: 0.4rem;
-  border-radius: 20px; }
+  min-width: fit-content;
+  min-height: fit-content;
+  border-radius: 20px;
+  border-right: #FE5F55 2px solid;
+  border-top: #b05e9d 2px solid;
+  border-bottom: #FE5F55 2px solid;
+  border-left: #b05e9d 2px solid; }
+  @media (max-width: 625px) {
+    .info {
+      transform: scale(0.8) translateX(-50%); } }
+
+@media (max-width: 1125px) {
+  #image-heading {
+    display: none; } }
+
+@media (max-width: 768px) {
+  #image-heading {
+    display: none; } }
