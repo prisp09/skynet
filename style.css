@@ -163,13 +163,13 @@ thead {
     border-top: 8px solid black; }
 
 .fruit-preview {
-  border-radius: 20px;
+  border-radius: 15px;
   border: transparent 2px solid;
   height: 200px;
   width: fit-content;
   cursor: pointer; }
   .fruit-preview:hover {
-    border: #172c66 4px solid; }
+    border: #f3d2c1 4px solid; }
   @media (max-width: 1125px) {
     .fruit-preview {
       transform: scale(0.8) translateX(-40%); } }
