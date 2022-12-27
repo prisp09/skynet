@@ -14,12 +14,14 @@
 		<link rel="stylesheet" href="style.css" />
 	</head>
 	<body>
+		<!-- Frosted glass background -->
 		<div class="bg-image">
 			<div class="blur"></div>
 		</div>
+
 		<div class="content-wrapper">
-			<div class="table-wrapper">
-				<div class="container">
+			<div class="table-wrapper"> <!-- This is the table wrapper -->
+				<div class="container"> <!-- This is a bootstrap container and we will be making two table as bootstrap rows container -->
 					<div id="zeni" class="row"></div>
 				</div>
 
@@ -32,8 +34,9 @@
 				<br />
 			</div>
 
-			<div class="container">
-				<div class="row" style="height: 200px">
+			<div class="container"> <!-- This is a bootstrap container for our functionality section -->
+				<div class="row" style="height: 200px"> <!-- We will be using one single row with columns that add up to 12,
+					 so we can have an easier time with resizing and arranging HTML elements -->
 					<div class="col-3" id="filters" class="filters"></div>
 					<div class="col-4" id="estimate">
 						<h1>Estimate:</h1>

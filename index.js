@@ -1,8 +1,8 @@
-const zeni = [];
-const vasani = [];
-const allFruits = new Set();
-var flag = true;
-fetch(`./data.json`)
+const zeni = []; // Array of fruits from Zeni Fruits
+const vasani = []; // Array of fruits from Vasani Fresh
+const allFruits = new Set(); // Set of all fruits
+var flag = true; // Flag to check if there is a fruit selected for our image preview
+fetch(`./data.json`) // Fetching the data from the JSON file
 	.then((response) => response.json())
 	.then((data) => {
 		data.forEach((fruit) => {
@@ -13,10 +13,11 @@ fetch(`./data.json`)
 			}
 			allFruits.add(fruit.fruit_name);
 		});
-		renderFruits(zeni, vasani);
-		renderFruits(vasani, zeni);
-		renderFilters(allFruits);
-		renderEstimate();
+
+		renderFruits(zeni, vasani); //rendering the zeni fruits table
+		renderFruits(vasani, zeni); //rendering the vasani fruits table
+		renderFilters(allFruits); //rendering the filters section
+		renderEstimate(); //rendering the estimate section
 	});
 
 function renderEstimate() {
@@ -28,13 +29,17 @@ function renderEstimate() {
 		`
 	});
 
+	//adding options to the select element
 	document.getElementById("fruit-input").innerHTML = html;
+
+	//adding our initial estimate
 	document.getElementById("price-output").innerHTML = `
 	<div for="total-output" class="output-labels total-output">Total:</div><div id="total-output" class="output-labels calculated-output total-output">${calculateEstimate()[4]}</div><br/>
 	<div for="zeni-total" class="output-labels">Zeni:</div><div id="zeni-total" class="output-labels calculated-output">${calculateEstimate()[0]}/${calculateEstimate()[1]} items</div><br/>
 	<div for="vasani-total" class="output-labels">Vasani:</div><div id="vasani-total" class="output-labels calculated-output">${calculateEstimate()[2]}/${calculateEstimate()[3]} items</div>
 	`;
 	
+	//adding event listeners to the select and input elements
 	document.getElementById("fruit-input").onchange = function () {
 		const arr = calculateEstimate();
 		if(arr === null){
@@ -75,11 +80,13 @@ function calculateEstimate() {
 
 	let bool = zeniPrice < vasaniPrice;
 
+	//checking if the quantity requested is greater than the quantity available, if so, we return null
 	if (fruitQuantity > zeniQuantity + vasaniQuantity) {
-		document.getElementById("price-output").innerHTML = "Not enough fruit!";
+		document.getElementById("price-output").innerHTML = `<div style="color: #f582ae; font-weight: bold;">Not enough fruit!</div>`;
 		return null;
 	};
 
+	//calculating the total price, while also keeping track of the quantity of each fruit from individual suppliers
 	for(let i = 0; i < fruitQuantity; i++){
 		if(bool){
 			zeniTotal += zeniPrice;
@@ -107,16 +114,16 @@ function renderFruits(fruits, rival) {
 	const supplierFull = fruits[0].supplier;
 	const supplier = supplierFull.split(" ")[0].toLowerCase();
 	
-	populate(fruits);
+	populate(fruits); //populating the select element with the fruits from the supplier
 
-	highlight(fruits, rival);
+	highlight(fruits, rival); //highlighting the fruits that are cheaper than the rival
 
-	renderSort(supplier);
+	addSort(supplier); //rendering the sort buttons
 
-	renderImage(fruits, supplier);
+	renderImage(fruits, supplier); //rendering the images of the fruits
 }
 
-function populate(fruits) {
+function populate(fruits) { //making the tables and adding the fruits and sort buttons to the tables
 	const supplierFull = fruits[0].supplier;
 	const supplier = supplierFull.split(" ")[0].toLowerCase();
 	let html = `<h1 id="${supplier}">${supplierFull}</h1>
@@ -162,7 +169,7 @@ function highlight(fruits, rival){
 	});
 }
 
-function renderSort(supplier){
+function addSort(supplier){ //adding the sort button functionality
 	if (supplier === "zeni") {
 		document.getElementById("sortFruitAsczeni").onclick = function () {
 			sort(zeni, "fruit_name");
@@ -263,6 +270,7 @@ function renderSort(supplier){
 }
 
 function sort(fruits, param, ascending = true) {
+	//sorting the fruits, based on ascending or descending and the parameter provided by the button clicked by the user
 	if (ascending) {
 		if (param === "price") {
 			fruits.sort((a, b) => a.price - b.price);
@@ -291,6 +299,7 @@ function sort(fruits, param, ascending = true) {
 }
 
 function renderImage(fruits, supplier){
+	//adding onclick event to the cells on the table, to change the image when clicked
 		if (supplier === "zeni") {
 		fruits.forEach((fruit) => {
 			document.getElementById(
@@ -310,7 +319,8 @@ function renderImage(fruits, supplier){
 	}
 }
 
-function changeImage(fruit_name) {
+function changeImage(fruit_name) { //changing the image when one of the cells is clicked
+	//images are stored in the images folder and are named the same as the fruit name
 	if (flag) {
 		document.getElementById("image-column").innerHTML = `<br/><img
 		id="fruit-preview"
@@ -323,7 +333,7 @@ function changeImage(fruit_name) {
 			"fruit-preview"
 		).src = `./images/${fruit_name}.jpg`;
 	}
-
+	//adding onclick event to the image, to open a new tab with google search results for the fruit name
 	document.getElementById("fruit-preview").onclick = function () {
 		window.open(
 			`https://www.google.com/search?q=${fruit_name.split(" ").join("+")}`
@@ -332,6 +342,7 @@ function changeImage(fruit_name) {
 }
 
 function renderFilters(arr) {
+	//rendering the filters based on the allFruits set to avoid duplicates
 	let html = `<h1>Filters:</h1>`;
 
 	arr.forEach((fruit) => {
@@ -348,6 +359,7 @@ function renderFilters(arr) {
 }
 
 function applyFilters() {
+	//applying the filters based on the checkboxes by adding event listeners to them
 	const filters = document.querySelectorAll("input[type=checkbox]");
 	filters.forEach((filter) => {
 		filter.addEventListener("change", function () {
@@ -371,6 +383,7 @@ function applyFilters() {
 };
 
 function filterSorted(supplier, supplierName){
+	//since we rerender the table when sorting, we need to apply the filters again after sorting
 	const filters = document.querySelectorAll("input[type=checkbox]");
 	filters.forEach((filter) => {
 			supplier.forEach((fruit) => {
@@ -386,6 +399,7 @@ function filterSorted(supplier, supplierName){
 }
 
 function contains(rival, curr) {
+	//function to check if the fruit is in the rival's inventory
 	let bool = false;
 	rival.forEach((fruit) => {
 		if (fruit.fruit_name === curr) {
@@ -397,6 +411,7 @@ function contains(rival, curr) {
 }
 
 function price(rival, curr) {
+	//function to get the price of the fruit from the rival's inventory
 	let price = 0;
 	rival.forEach((fruit) => {
 		if (fruit.fruit_name === curr) {
@@ -408,6 +423,7 @@ function price(rival, curr) {
 }
 
 function quantity(rival, curr) {
+	//function to get the quantity of the fruit from the rival's inventory
 	let quantity = 0;
 	rival.forEach((fruit) => {
 		if (fruit.fruit_name === curr) {
