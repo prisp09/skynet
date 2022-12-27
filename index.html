@@ -17,24 +17,40 @@
 		<div class="bg-image"></div>
 		<div class="content-wrapper">
 			<div class="table-wrapper">
-			<div class="container">
-				<div id="zeni" class="row"></div>
+				<div class="container">
+					<div id="zeni" class="row"></div>
+				</div>
+
+				<br />
+
+				<div class="container">
+					<div id="vasani" class="row"></div>
+				</div>
+
+				<br />
 			</div>
-
-			<br />
-
-			<div class="container">
-				<div id="vasani" class="row"></div>
-			</div>
-
-			<br />
-
-		</div>
 
 			<div class="container">
 				<div class="row" style="height: 200px">
 					<div class="col-2" id="filters" class="filters"></div>
-					<div class="col-4"></div>
+					<div class="col-4" id="estimate">
+						<h1>Estimate:</h1>
+						<div class="estimate-wrapper">
+							<label for="fruit-input">Fruit:</label>
+							<select id="fruit-input" class="fruit-input"></select>
+						</div>
+						<br/>
+						<div class="estimate-wrapper">
+							<label for="quantity-input">Quantity:</label>
+							<input type="number" value="0" id="quantity-input" class="quantity-input" min="0"/>
+						</div>
+						<br/>
+						<div class="estimate-wrapper">
+							<label for="price-output">Estimated Cost:</label>
+							<div id="price-output" class="price-output">
+							</div>
+						</div>
+					</div>
 					<div class="col-1">
 						<br />
 						<br />

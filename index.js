@@ -16,7 +16,92 @@ fetch(`./data.json`)
 		renderFruits(zeni, vasani);
 		renderFruits(vasani, zeni);
 		renderFilters(allFruits);
+		renderEstimate();
 	});
+
+function renderEstimate() {
+	let html = "";
+
+	allFruits.forEach((fruit) => {
+		html += `
+		<option value="${fruit}">${fruit}</option>
+		`
+	});
+
+	document.getElementById("fruit-input").innerHTML = html;
+	document.getElementById("price-output").innerHTML = `
+	Total: ${calculateEstimate()[4]}<br/>
+	Zeni: ${calculateEstimate()[0]} for ${calculateEstimate()[1]} items<br/>
+	Vasani: ${calculateEstimate()[2]} for ${calculateEstimate()[3]} items
+	`;
+	
+	document.getElementById("fruit-input").onchange = function () {
+		const arr = calculateEstimate();
+		if(arr === null){
+			return;
+		}
+		document.getElementById("price-output").innerHTML = `
+		Total: ${arr[4]}<br/>
+		Zeni: ${arr[0]} for ${arr[1]} items<br/>
+		Vasani: ${arr[2]} for ${arr[3]} items
+		`;
+	};
+	
+	document.getElementById("quantity-input").onchange = function () {
+		const arr = calculateEstimate();
+		if(arr === null){
+			return null;
+		}
+		document.getElementById("price-output").innerHTML = `
+		Total: ${arr[4]}<br/>
+		Zeni: ${arr[0]} for ${arr[1]} items<br/>
+		Vasani: ${arr[2]} for ${arr[3]} items
+		`;
+	};
+}
+
+function calculateEstimate() {
+	const fruit = document.getElementById("fruit-input").value;
+	let fruitQuantity = document.getElementById("quantity-input").value;
+	const zeniPrice = price(zeni, fruit);
+	const vasaniPrice = price(vasani, fruit);
+	let zeniQuantity = quantity(zeni, fruit);
+	let zeniCount = 0;
+	let vasaniQuantity = quantity(vasani, fruit);
+	let vasaniCount = 0;
+	let zeniTotal = 0;
+	let vasaniTotal = 0;
+	let total = 0;
+
+	let bool = zeniPrice < vasaniPrice;
+
+	if (fruitQuantity > zeniQuantity + vasaniQuantity) {
+		document.getElementById("price-output").innerHTML = "Not enough fruit!";
+		return null;
+	};
+
+	for(let i = 0; i < fruitQuantity; i++){
+		if(bool){
+			zeniTotal += zeniPrice;
+			zeniQuantity--;
+			bool = zeniQuantity > 0;
+			zeniCount++;
+		}
+		else{
+			vasaniTotal += vasaniPrice;
+			vasaniQuantity--;
+			bool = !(vasaniQuantity > 0);
+			vasaniCount++;
+		}
+	}
+	total = zeniTotal + vasaniTotal;
+	zeniTotal = zeniTotal.toFixed(2);
+	vasaniTotal = vasaniTotal.toFixed(2);
+	total = total.toFixed(2);
+
+	return [zeniTotal, zeniCount, vasaniTotal, vasaniCount, total];
+
+}
 
 function renderFruits(fruits, rival) {
 	const supplierFull = fruits[0].supplier;
@@ -320,4 +405,15 @@ function price(rival, curr) {
 		}
 	});
 	return price;
+}
+
+function quantity(rival, curr) {
+	let quantity = 0;
+	rival.forEach((fruit) => {
+		if (fruit.fruit_name === curr) {
+			quantity = fruit.inventory_count;
+			return;
+		}
+	});
+	return quantity;
 }

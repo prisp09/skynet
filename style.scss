@@ -37,6 +37,59 @@ body {
     margin: 0.2rem 0;
 }
 
+.estimate-wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.2rem 4rem;
+    @media (max-width: 768px) {
+        margin: 0.2rem 0;
+    }
+}
+
+.fruit-input{
+    height: 30px;
+    min-width: 40px;
+    border-radius: 5px;
+    border: $color-indigo-dye 2px solid;
+    text-align: left;
+    font-size: 1rem;
+    font-weight: bold;
+    outline: none;
+    cursor: pointer;
+}
+
+.quantity-input{
+    width: 109px;
+    height: 30px;
+    min-width: 40px;
+    border-radius: 5px;
+    border: $color-indigo-dye 2px solid;
+    text-align: right;
+    font-size: 1rem;
+    font-weight: bold;
+    outline: none;
+}
+
+.price-output{
+    width: 109px;
+    min-height: 131px;
+    min-width: 40px;
+    background-color: #FFF;
+    color: #000;
+    border-radius: 5px;
+    border: $color-indigo-dye 2px solid;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: bold;
+    outline: none;
+    padding: 0.2rem;
+}
+
 .content-wrapper{
     margin: 1.5rem 2rem;
 }
@@ -162,7 +215,7 @@ thead {
     border-left: $color-razzmic-berry 2px solid;
     
     @media (max-width: 625px) {
-        transform: scale(0.8) translateX(-50%);
+        visibility: hidden;
     }
 }
 
