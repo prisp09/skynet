@@ -99,6 +99,8 @@ body {
   margin: 1.5rem 2rem; }
 
 table {
+  border-radius: 5px;
+  backdrop-filter: blur(100px);
   border-collapse: collapse;
   width: 100%;
   border: #001858 2px solid;

@@ -121,6 +121,8 @@ body {
 }
 
 table {
+    border-radius: 5px;
+    backdrop-filter: blur(100px);
     border-collapse: collapse;
     width: 100%;
     border: $color-heading 2px solid;
