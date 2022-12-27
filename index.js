@@ -30,9 +30,9 @@ function renderEstimate() {
 
 	document.getElementById("fruit-input").innerHTML = html;
 	document.getElementById("price-output").innerHTML = `
-	Total: ${calculateEstimate()[4]}<br/>
-	Zeni: ${calculateEstimate()[0]} for ${calculateEstimate()[1]} items<br/>
-	Vasani: ${calculateEstimate()[2]} for ${calculateEstimate()[3]} items
+	<div for="total-output" class="output-labels total-output">Total:</div><div id="total-output" class="output-labels calculated-output total-output">${calculateEstimate()[4]}</div><br/>
+	<div for="zeni-total" class="output-labels">Zeni:</div><div id="zeni-total" class="output-labels calculated-output">${calculateEstimate()[0]}/${calculateEstimate()[1]} items</div><br/>
+	<div for="vasani-total" class="output-labels">Vasani:</div><div id="vasani-total" class="output-labels calculated-output">${calculateEstimate()[2]}/${calculateEstimate()[3]} items</div>
 	`;
 	
 	document.getElementById("fruit-input").onchange = function () {
@@ -41,9 +41,9 @@ function renderEstimate() {
 			return;
 		}
 		document.getElementById("price-output").innerHTML = `
-		Total: ${arr[4]}<br/>
-		Zeni: ${arr[0]} for ${arr[1]} items<br/>
-		Vasani: ${arr[2]} for ${arr[3]} items
+		<div for="total-output" class="output-labels total-output">Total:</div><div id="total-output" class="output-labels calculated-output total-output">${arr[4]}</div><br/>
+		<div for="zeni-total" class="output-labels">Zeni:</div><div id="zeni-total" class="output-labels calculated-output">${arr[0]}/${arr[1]} items</div><br/>
+		<div for="vasani-total" class="output-labels">Vasani:</div><div id="vasani-total" class="output-labels calculated-output">${arr[2]}/${arr[3]} items</div>
 		`;
 	};
 	
@@ -53,9 +53,9 @@ function renderEstimate() {
 			return null;
 		}
 		document.getElementById("price-output").innerHTML = `
-		Total: ${arr[4]}<br/>
-		Zeni: ${arr[0]} for ${arr[1]} items<br/>
-		Vasani: ${arr[2]} for ${arr[3]} items
+		<div for="total-output" class="output-labels total-output">Total:</div><div id="total-output" class="output-labels calculated-output total-output">${arr[4]}</div><br/>
+		<div for="zeni-total" class="output-labels">Zeni:</div><div id="zeni-total" class="output-labels calculated-output">${arr[0]}/${arr[1]} items</div><br/>
+		<div for="vasani-total" class="output-labels">Vasani:</div><div id="vasani-total" class="output-labels calculated-output">${arr[2]}/${arr[3]} items</div>
 		`;
 	};
 }
@@ -138,7 +138,7 @@ function populate(fruits) {
 		<td>${fruit.inventory_count}</td>
 		</tr>`;
 	});
-	html += `</table> `;
+	html += `<caption>*Blue is cheaper</caption></table> `;
 
 	document.getElementById(supplier).innerHTML = html;
 }
@@ -312,7 +312,7 @@ function renderImage(fruits, supplier){
 
 function changeImage(fruit_name) {
 	if (flag) {
-		document.getElementById("image-column").innerHTML = `<img
+		document.getElementById("image-column").innerHTML = `<br/><img
 		id="fruit-preview"
 		class="fruit-preview"
 		src="./images/${fruit_name}.jpg"
@@ -335,10 +335,10 @@ function renderFilters(arr) {
 	let html = `<h1>Filters:</h1>`;
 
 	arr.forEach((fruit) => {
-		html += `<span class="filter-inputs">
-		<label for="${fruit}-filter">${fruit}</label>
+		html += `<label class="filter-inputs">
+		<label for="${fruit}-filter" style="font-weight: bold">${fruit}</label>
 		<input type="checkbox" id="${fruit}-filter" name="${fruit}-filter" value="${fruit}" checked/>
-		</span>
+		</label>
 		`;
 	});
 

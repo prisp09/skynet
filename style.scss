@@ -1,14 +1,17 @@
-$color-background: #040F16;
-$color-text: #E5E7E6;
-$color-indigo-dye: #053C5E;
+$color-background: #fef6e4;
+$color-text: #172c66;
+$color-highlight: #f582ae;
 $color-razzmic-berry: #b05e9d;
 $color-orange-red-crayola: #FE5F55;
-$color-banana: #D1AC00;
+$color-heading: #001858;
+$color-cream: #f3d2c1;
+$color-dew: #8bd3dd;
 
 h1{
     font-size: 1.5rem;
     font-weight: bold;
     text-align: center;
+    color: $color-heading;
 }
 
 body {
@@ -29,6 +32,18 @@ body {
 //     z-index: -1;
 // }
 
+// .blur{
+//     background-size: cover;
+//     background-repeat: no-repeat;
+//     background-position: center;
+//     height: 100vh;
+//     width: 100vw;
+//     position: fixed;
+//     top: 0;
+//     z-index: -0.8;
+//     backdrop-filter: blur(5px);
+// }
+
 .filter-inputs{
     display: flex;
     flex-direction: row;
@@ -42,7 +57,7 @@ body {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin: 0.2rem 4rem;
+    margin: 0.2rem 0;
     @media (max-width: 768px) {
         margin: 0.2rem 0;
     }
@@ -52,7 +67,7 @@ body {
     height: 30px;
     min-width: 40px;
     border-radius: 5px;
-    border: $color-indigo-dye 2px solid;
+    border: $color-dew 2px solid;
     text-align: left;
     font-size: 1rem;
     font-weight: bold;
@@ -65,7 +80,7 @@ body {
     height: 30px;
     min-width: 40px;
     border-radius: 5px;
-    border: $color-indigo-dye 2px solid;
+    border: $color-dew 2px solid;
     text-align: right;
     font-size: 1rem;
     font-weight: bold;
@@ -73,21 +88,32 @@ body {
 }
 
 .price-output{
-    width: 109px;
-    min-height: 131px;
+    width: 220px;
     min-width: 40px;
-    background-color: #FFF;
-    color: #000;
+    background-color: $color-cream;
+    color: #FFF;
     border-radius: 5px;
-    border: $color-indigo-dye 2px solid;
-    text-align: left;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    font-size: 1rem;
-    font-weight: bold;
-    outline: none;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.output-labels{
     padding: 0.2rem;
+    color:$color-heading;
+    flex: 1 0 49%;
+    font-weight: bold;
+}
+
+.calculated-output{
+    color: $color-text;
+}
+
+.total-output{
+    background-color: $color-highlight;
+    color: $color-background;
+    padding: 0.2rem;
+    border-radius: 1px;
 }
 
 .content-wrapper{
@@ -97,13 +123,14 @@ body {
 table {
     border-collapse: collapse;
     width: 100%;
-    border: $color-indigo-dye 2px solid;
+    border: $color-heading 2px solid;
     overflow-wrap: break-word;
     table-layout: fixed;
 }
 
 th {
-    border: $color-indigo-dye 2px solid;
+    border: $color-cream 2px solid;
+    border-radius: 5px;
     overflow-wrap: break-word;
     padding-left: 4px;
     padding-right: 4px;
@@ -111,28 +138,30 @@ th {
 }
 
 td {
-    border: $color-indigo-dye 2px solid;
+    border: $color-cream 2px solid;
     overflow-wrap: break-word;
     padding-left: 4px;
     padding-right: 4px;
 }
 
 thead {
-    background-color: $color-indigo-dye;
-    color: $color-text;
+    background-color: $color-highlight;
+    color: $color-background;
 }
 
 #zeni {
     color: $color-razzmic-berry;
+    font-weight: bold;
 }
 
 #vasani {
     color: $color-orange-red-crayola;
+    font-weight: bold;
 }
 
 .highlight {
-    background-color: $color-banana;
-    color: #000;
+    background-color: $color-dew;
+    color: $color-heading;
     font-weight: bold;
 }
 
@@ -148,7 +177,7 @@ thead {
     cursor: pointer;
 
     &:hover {
-        border-bottom: 8px solid $color-banana;
+        border-bottom: 8px solid $color-dew;
     }
 }
 
@@ -164,7 +193,7 @@ thead {
     cursor: pointer;
 
     &:hover {
-        border-top: 8px solid $color-banana;
+        border-top: 8px solid $color-dew;
     }
 }
 
@@ -195,7 +224,7 @@ thead {
 }
 
 .banana{
-    background-color: $color-banana;
+    background-color: $color-dew;
     color: #000;
     font-weight: bold;
     padding-inline: 2px;
@@ -209,10 +238,7 @@ thead {
     min-width: fit-content;
     min-height: fit-content;
     border-radius: 20px;
-    border-right: $color-orange-red-crayola 2px solid;
-    border-top: $color-razzmic-berry 2px solid;
-    border-bottom: $color-orange-red-crayola 2px solid;
-    border-left: $color-razzmic-berry 2px solid;
+    border: $color-text 2px solid;
     
     @media (max-width: 625px) {
         visibility: hidden;
@@ -228,3 +254,4 @@ thead {
     }
     
 }
+
