@@ -4,7 +4,24 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Skynet</title>
+		<title>Jim's Dash</title>
+		<link
+			rel="apple-touch-icon"
+			sizes="180x180"
+			href="images/apple-touch-icon.png"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="32x32"
+			href="images/favicon-32x32.png"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="16x16"
+			href="images/favicon-16x16.png"
+		/>
 		<link
 			href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
 			rel="stylesheet"
@@ -20,47 +37,64 @@
 		</div>
 
 		<div class="content-wrapper">
-			<div class="table-wrapper"> <!-- This is the table wrapper -->
-				<div class="container"> <!-- This is a bootstrap container and we will be making two table as bootstrap rows container -->
+			<div class="table-wrapper">
+				<!-- This is the table wrapper -->
+				<div class="container">
+					<!-- This is a bootstrap container and we will be making two table as bootstrap rows container -->
 					<div id="zeni" class="row"></div>
 				</div>
-
-				<br />
 
 				<div class="container">
 					<div id="vasani" class="row"></div>
 				</div>
 
-				<br />
 			</div>
 
-			<div class="container"> <!-- This is a bootstrap container for our functionality section -->
-				<div class="row" style="height: 200px"> <!-- We will be using one single row with columns that add up to 12,
+			<div class="container">
+				<!-- This is a bootstrap container for our functionality section -->
+				<div class="row" style="height: 200px">
+					<!-- We will be using one single row with columns that add up to 12,
 					 so we can have an easier time with resizing and arranging HTML elements -->
 					<div class="col-3" id="filters" class="filters"></div>
 					<div class="col-4" id="estimate">
 						<h1>Estimate:</h1>
 						<div class="estimate-wrapper">
-							<label for="fruit-input" style="font-weight: bold;">Fruit:</label>
-							<select id="fruit-input" class="fruit-input"></select>
+							<label for="fruit-input" style="font-weight: bold"
+								>Fruit:</label
+							>
+							<select
+								id="fruit-input"
+								class="fruit-input"
+							></select>
 						</div>
-						<br/>
+						<br />
 						<div class="estimate-wrapper">
-							<label for="quantity-input" style="font-weight: bold;">Quantity:</label>
-							<input type="number" value="0" id="quantity-input" class="quantity-input" min="0"/>
+							<label
+								for="quantity-input"
+								style="font-weight: bold"
+								>Quantity:</label
+							>
+							<input
+								type="number"
+								value="0"
+								id="quantity-input"
+								class="quantity-input"
+								min="0"
+							/>
 						</div>
-						<br/>
+						<br />
 						<div class="estimate-wrapper">
-							<label for="price-output" style="font-weight: bold;">Estimated Cost:</label>
-							<div id="price-output" class="price-output">
-							</div>
+							<label for="price-output" style="font-weight: bold"
+								>Estimated Cost:</label
+							>
+							<div id="price-output" class="price-output"></div>
 						</div>
 					</div>
 					<div class="col-2">
 						<br />
 						<br />
 						<br />
-						<br/>
+						<br />
 						<h1 id="image-heading">Fruit Preview:</h1>
 					</div>
 					<div id="image-column" class="col-3"></div>
