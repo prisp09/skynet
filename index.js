@@ -1,6 +1,7 @@
 const zeni = []; // Array of fruits from Zeni Fruits
 const vasani = []; // Array of fruits from Vasani Fresh
 const allFruits = new Set(); // Set of all fruits
+const allFruitsarr = []; // Array of all fruits
 var flag = true; // Flag to check if there is a fruit selected for our image preview
 fetch(`./data.json`) // Fetching the data from the JSON file
 	.then((response) => response.json())
@@ -12,13 +13,44 @@ fetch(`./data.json`) // Fetching the data from the JSON file
 				vasani.push(fruit);
 			}
 			allFruits.add(fruit.fruit_name);
+			allFruitsarr.push(fruit);
 		});
 
 		renderFruits(zeni, vasani); //rendering the zeni fruits table
 		renderFruits(vasani, zeni); //rendering the vasani fruits table
+
 		renderFilters(allFruits); //rendering the filters section
 		renderEstimate(); //rendering the estimate section
+		renderSingle(allFruitsarr); //rendering the single table
 	});
+
+function renderSingle(fruits){
+	let html = `
+	<table>
+		<thead>
+		<th>Fruit</th>
+		<th>Price</th>
+		<th>Last Updated</th>
+		<th>Inventory Count</th>
+		<th>Supplier</th>
+   		</thead>`;
+
+	fruits.forEach((fruit)=>{
+		html += `
+			<tr>
+				<td>${fruit.fruit_name}</td>
+				<td>${fruit.price}</td>
+				<td>${fruit.last_updated}</td>
+				<td>${fruit.inventory_count}</td>
+				<td>${fruit.supplier}</td>
+			</tr>
+		`
+	})
+
+	html+= "</table>";
+
+	document.getElementById("allFruits").innerHTML = html;
+}
 
 function renderEstimate() {
 	let html = "";
